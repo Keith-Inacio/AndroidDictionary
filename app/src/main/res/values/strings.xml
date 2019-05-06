@@ -11,5 +11,7 @@
     <string name="radio_button_adverb">Adverb</string>
     <string name="prepositionBraces">(%s)</string>
     <string name="new_definition_title">NEW WORD ADDED!</string>
+    <string name="entry_error">You must enter a word and definition!</string>
+    <string name="radio_button_error">You must select a speech category button!</string>
 
 </resources>

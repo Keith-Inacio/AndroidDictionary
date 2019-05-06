@@ -9,7 +9,7 @@
         android:id="@+id/textWordView"
         style="@style/definition_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@android:color/holo_orange_light"/>
 
 
@@ -17,7 +17,7 @@
         android:id="@+id/textCategoryView"
         style="@style/definition_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@android:color/holo_orange_light"/>
 
     <TextView

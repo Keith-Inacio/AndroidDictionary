@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     DictionaryAdapter mAdapter;
     private DictionaryViewModel mWordViewModel;
-    private List<Word> mList;
     int position;
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable final List<Word> words) {
                 // Update the cached copy of the words in the adapter.
                 mAdapter.setWords(words);
-                mList=words;
             }
         });
 
@@ -71,12 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
             Word definitionEntry = new Word(word, speech, definition);
 
-            if(!mAdapter.containsWord(word)) {
+            if (!mAdapter.containsWord(word)) {
                 mWordViewModel.insert(definitionEntry);
             } else {
                 mWordViewModel.update(definitionEntry);
             }
-           //appNofification(word, speech, definition);
+
+            //appNofification(word, speech, definition);
         } else {
             Toast.makeText(getApplicationContext(), R.string.empty_not_saved, Toast.LENGTH_LONG).show();
         }
@@ -113,17 +113,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    /*
-    public void appNofification(String word, String speech, String definition) {
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_dictionary_red_24dp)
-                .setContentTitle(R.string.new_definition_title)
-                .setContentText(word + speech + definition)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-    }
-    */
 
 }
 

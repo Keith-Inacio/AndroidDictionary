@@ -49,16 +49,16 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Wo
         notifyDataSetChanged();
     }
 
-    public Boolean containsWord(String value){
-        Boolean check=false;
+    public Boolean containsWord(String value) {
+        Boolean check = false;
 
-           for(Word word : mWords) {
+        for (Word word : mWords) {
 
-               if (mWords.get(mWords.indexOf(word)).getWord().equals(value)) {
-                   return check = true;
-               }
+            if (mWords.get(mWords.indexOf(word)).getWord().equals(value)) {
+                check = true;
+            }
 
-           }
+        }
 
         return check;
     }
@@ -67,9 +67,9 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Wo
     // mWords has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
-        if (mWords != null) { return mWords.size();}
-
-        else return 0;
+        if (mWords != null) {
+            return mWords.size();
+        } else return 0;
     }
 
     public String getSelectedWordName(int position) {
