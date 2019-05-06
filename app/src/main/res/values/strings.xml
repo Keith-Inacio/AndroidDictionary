@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">KeithInacio</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_word">Word...</string>
+    <string name="hint_definition">Definition...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="radio_button_noun">Noun</string>
+    <string name="radio_button_preposition">Preposition</string>
+    <string name="radio_button_adjective">Adjective</string>
+    <string name="radio_button_adverb">Adverb</string>
+    <string name="prepositionBraces">(%s)</string>
+    <string name="new_definition_title">NEW WORD ADDED!</string>
+
+</resources>
