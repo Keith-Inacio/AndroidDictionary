@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-//**This class creates the Room database and establishes the entities to create the database.
+/**This class creates the Room database and establishes the entities to create the database.*/
 @Database(entities = {Word.class}, version = 1)
 public abstract class DictionaryRoomDatabase extends RoomDatabase {
 
@@ -19,7 +19,7 @@ public abstract class DictionaryRoomDatabase extends RoomDatabase {
     //create a Singleton so only one instance of DB exists
     private static volatile DictionaryRoomDatabase INSTANCE;
 
-    //build the Room database object
+    //build the Room database object and implement callback to populate database when opened
     static DictionaryRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (DictionaryRoomDatabase.class) {
@@ -31,6 +31,7 @@ public abstract class DictionaryRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    //delete all content and repopulate the database whenever the app is started with callback
     private static RoomDatabase.Callback sRoomDatabaseCallback =
             new RoomDatabase.Callback(){
 
@@ -53,10 +54,14 @@ public abstract class DictionaryRoomDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
             mDao.deleteAll();
-            Word word = new Word("Hello", "adv.", "A Greeting");
+            Word word = new Word("Dog", "n.", "a domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, nonretractable claws, " +
+                    "and a barking, howling, or whining voice");
             mDao.insert(word);
-            word = new Word("World", "n.", "Where we live");
+            word = new Word("Earth", "n.", "the planet on which we live");
             mDao.insert(word);
+            word = new Word("Strenuous", "adj.", "requiring or using great exertion");
+            mDao.insert(word);
+
             return null;
         }
     }

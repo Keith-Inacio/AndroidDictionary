@@ -14,6 +14,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "dictionary")
 public class Word {
 
+    //set primary key and table columns for the variables below
+
     @ColumnInfo(name = "word")
     @PrimaryKey
     @NonNull
@@ -33,6 +35,8 @@ public class Word {
         mSpeechCategory = speechCategory;
         mDefinition = definition;
     }
+
+    //getter methods for the application
 
     public String getWord() {
         return mWord;

@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-//*This repository class handles DB operations and initializes member variables
+//This repository class handles DB operations and initializes member variables
 public class DictionaryRepository {
 
     private WordDao mWordDao;
@@ -24,14 +24,11 @@ public class DictionaryRepository {
         return mAllWords;
     }
 
-    //insert method must be called using an AsyncTask on a background thread
+    //insert method must be called using an AsyncTask belowon a background thread to insert new definition
     public void insert(Word word) {
         new insertAsyncTask(mWordDao).execute(word);
     }
 
-    public void update(Word word) {
-        new updateAsyncTask(mWordDao).execute(word);
-    }
 
     private static class insertAsyncTask extends AsyncTask<Word, Void, Void> {
 
@@ -46,6 +43,11 @@ public class DictionaryRepository {
             mAsyncTaskDao.insert(params[0]);
             return null;
         }
+    }
+
+    ////update method for already existing word definition must be called using an AsyncTask below on a background thread
+    public void update(Word word) {
+        new updateAsyncTask(mWordDao).execute(word);
     }
 
     private static class updateAsyncTask extends AsyncTask<Word, Void, Void> {

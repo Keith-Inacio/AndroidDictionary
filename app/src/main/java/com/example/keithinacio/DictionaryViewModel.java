@@ -15,11 +15,14 @@ public class DictionaryViewModel extends AndroidViewModel {
     private DictionaryRepository mRepository;
     private LiveData<List<Word>> mAllWords;
 
+    //constructor handle into DB and initialize DAO variables and word list
     public DictionaryViewModel(Application application) {
         super(application);
         mRepository = new DictionaryRepository(application);
         mAllWords = mRepository.getAllWords();
     }
+
+    //below methods for Room to execute queries on background thread
 
     LiveData<List<Word>> getAllWords() {
         return mAllWords;
